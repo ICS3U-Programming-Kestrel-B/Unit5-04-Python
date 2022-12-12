@@ -9,6 +9,52 @@
 
 import math
 
+# making calculate function
+def calculate(user_sign, first_num, second_num):
+    # initializing error_check
+    error_check = "No error"
+    try:
+        # checking to see if first_num is a float
+        first_num_float = float(first_num)
+
+        try:
+            # checking to see if second_num is a float
+            second_num_float = float(second_num)
+
+            if user_sign == "+":
+                answer = first_num_float + second_num_float
+                complete_string = first_num + " + " + second_num + " = " + answer
+                return complete_string
+            elif user_sign == "-":
+                answer = first_num_float - second_num_float
+                complete_string = first_num + " - " + second_num + " = " + answer
+                return complete_string
+            elif user_sign == "/":
+                answer = first_num_float / second_num_float
+                complete_string = first_num + " / " + second_num + " = " + answer
+                return complete_string
+            elif user_sign == "*":
+                multiplication_answer = first_num_float * second_num_float
+                complete_string = first_num + " * " + second_num + " = " + multiplication_answer
+                return complete_string
+            else:
+                complete_string = "Sign error"
+                return complete_string
+
+
+        except ValueError:
+            # string message
+            print("\n")
+            print("Please enter a valid second number.")
+        finally:
+            print("\n")
+    except ValueError:
+        # string message
+        print("\n")
+        print("Please enter a valid first number.")
+    finally:
+        print("\n")
+
 def main():
     # introductory paragraph
     print("This program asks for an")
@@ -27,51 +73,7 @@ def main():
     # initializing second_num
     second_num = input("Enter your second number: ")
 
-    # making calculate function
-    def calculate(user_sign, first_num, second_num):
-        # initializing error_check
-        error_check = "No error"
-        try:
-            # checking to see if first_num is a float
-            first_num_float = float(first_num)
 
-            try:
-                # checking to see if second_num is a float
-                second_num_float = float(second_num)
-
-                match user_sign:
-                    case "+":
-                        addition_answer = first_num_float + second_num_float
-                        complete_string = first_num + " + " + second_num + " = " + addition_answer
-                        return complete_string
-                    case "-":
-                        subtraction_answer = first_num_float - second_num_float
-                        complete_string = first_num + " - " + second_num + " = " + subtraction_answer
-                        return complete_string
-                    case "/":
-                        division_answer = first_num_float / second_num_float
-                        complete_string = first_num + " / " + second_num + " = " + division_answer
-                        return complete_string
-                    case "*":
-                        multiplication_answer = first_num_float * second_num_float
-                        complete_string = first_num + " * " + second_num + " = " + multiplication_answer
-                        return complete_string
-                    # invalid input
-                    case _:
-                        error_check = "Sign error";
-                        return error_check
-            except ValueError:
-                # string message
-                print("\n")
-                print("Please enter a valid second number.")
-            finally:
-                print("\n")
-        except ValueError:
-            # string message
-            print("\n")
-            print("Please enter a valid first number.")
-        finally:
-            print("\n")
 
     # calling function
     calculated = calculate(user_sign, first_num, second_num)
