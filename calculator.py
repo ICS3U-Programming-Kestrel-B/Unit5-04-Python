@@ -11,8 +11,8 @@ import math
 
 # making calculate function
 def calculate(user_sign, first_num, second_num):
-    # initializing error_check
-    error_check = "No error"
+    # initializing answer
+    answer = 0
     try:
         # checking to see if first_num is a float
         first_num_float = float(first_num)
@@ -21,39 +21,33 @@ def calculate(user_sign, first_num, second_num):
             # checking to see if second_num is a float
             second_num_float = float(second_num)
 
+            # checking to see what calculation to do
             if user_sign == "+":
                 answer = first_num_float + second_num_float
-                complete_string = first_num + " + " + second_num + " = " + answer
-                return complete_string
             elif user_sign == "-":
                 answer = first_num_float - second_num_float
-                complete_string = first_num + " - " + second_num + " = " + answer
-                return complete_string
             elif user_sign == "/":
                 answer = first_num_float / second_num_float
-                complete_string = first_num + " / " + second_num + " = " + answer
-                return complete_string
             elif user_sign == "*":
-                multiplication_answer = first_num_float * second_num_float
-                complete_string = first_num + " * " + second_num + " = " + multiplication_answer
-                return complete_string
+                answer = first_num_float * second_num_float
             else:
-                complete_string = "Sign error"
-                return complete_string
-
+                answer = "Sign error"
 
         except ValueError:
             # string message
             print("\n")
             print("Please enter a valid second number.")
-        finally:
-            print("\n")
+        # finally:
+        # print("\n")
     except ValueError:
         # string message
         print("\n")
         print("Please enter a valid first number.")
-    finally:
-        print("\n")
+    # finally:
+    # print("\n")
+
+    return answer
+
 
 def main():
     # introductory paragraph
@@ -73,19 +67,14 @@ def main():
     # initializing second_num
     second_num = input("Enter your second number: ")
 
-
-
     # calling function
-    calculated = calculate(user_sign, first_num, second_num)
-    # calculate(user_sign, first_num, second_num)
-
-    # checking if input is valid
-    if calculated != "Sign error":
-        # displaying to user
-        print(calculated)
+    answer = calculate(user_sign, first_num, second_num)
+    if answer != "Sign error":
+        # displaying the calculation
+        print("{} {} {} = {}".format(first_num, user_sign, second_num, answer))
     else:
-        # error message
-        print("Please enter a valid sign.")
+        # sign error message
+        print("Please enter a valid sign")
 
 
 if __name__ == "__main__":
